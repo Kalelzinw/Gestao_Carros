@@ -128,11 +128,11 @@ O backend é executado em um ambiente containerizado com Docker.
 
 | Tela de Login | Página Inicial (Home) |
 | :---: | :---: |
-| ![Tela de Login](./docs/screenshots/tela-login.png) | ![Página Inicial](./docs/screenshots/tela-home.png) |
+| ![Tela de Login](./screenshots/tela-login.png) | ![Página Inicial](./screenshots/tela-home.png) |
 
 | Formulário de Cadastro | Página de Detalhes do Veículo |
 | :---: | :---: |
-| ![Formulário de Cadastro](./docs/screenshots/form-cadastro.png) | ![Página de Detalhes](./docs/screenshots/tela-detalhes.png) |
+| ![Formulário de Cadastro](./screenshots/form-cadastro.png) | ![Página de Detalhes](./screenshots/tela-detalhes.png) |
 
 ---
 
