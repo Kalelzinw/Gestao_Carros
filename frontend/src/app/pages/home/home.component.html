@@ -1,0 +1,119 @@
+<div class="home-page-wrapper">
+
+  <section class="search-hero-section">
+    <h1>Encontre o carro dos seus sonhos</h1>
+    <p class="subtitle">Milhares de ofertas de veículos em todo o Brasil</p>
+
+    <form class="search-form" [formGroup]="searchForm" (ngSubmit)="submitSearch()">
+      <div class="search-input-main">
+          <input 
+        type="text" 
+        placeholder="Qual veículo está buscando hoje?"
+        formControlName="searchInput">
+    </div>
+      <div class="filters-and-button-row">
+        <div class="search-filters">
+     
+          <div class="filter-group">
+            <label for="marca">Marca</label>
+            <select id="marca"><option>Todas as marcas</option></select>
+          </div>
+          <div class="filter-group">
+            <label for="modelo">Modelo</label>
+            <select id="modelo"><option>Escolha o modelo</option></select>
+          </div>
+          <div class="filter-group">
+            <label for="ano">Ano</label>
+            <select id="ano"><option>Todos os anos</option></select>
+          </div>
+          <div class="filter-group">
+            <label for="preco">Preço</label>
+            <select id="preco"><option>Faixa de preço</option></select>
+          </div>
+          <div class="filter-group">
+            <label for="localizacao">Localização</label>
+            <select id="localizacao"><option>Todo o Brasil</option></select>
+          </div>
+          <div class="filter-group">
+            <label for="cor">Cor</label>
+            <select id="cor"><option>Todas as cores</option></select>
+          </div>
+        </div>
+        <button type="submit" class="search-button">Buscar Veículos</button>
+      </div>
+    </form>
+  </section>
+
+
+  <section class="home-section vehicle-highlights">
+    <h2 class="section-title">Destaques</h2>
+
+    <div class="vehicles-grid" *ngIf="vehicles.length > 0; else noVehicles">
+
+      <div *ngFor="let vehicle of vehicles" class="vehicle-card" (click)="navigateToDetail(vehicle.id)">
+        <div class="vehicle-image-container">
+          <img [src]="getVehicleImageUrl(vehicle.imageUrl)" alt="Foto de {{ vehicle.marca }} {{ vehicle.modelo }}">
+        </div>
+        <div class="vehicle-info">
+          <h3>{{ vehicle.marca }} {{ vehicle.modelo }}</h3>
+          <p class="details">{{ vehicle.ano }} &bull; {{ vehicle.placa }}</p>
+          <p class="location">{{ vehicle.localidade }}</p>
+          <p class="price">{{ vehicle.valorVenda | currency:'BRL':'symbol':'1.2-2' }}</p>
+        </div>
+      </div>
+    </div>
+    
+    
+    <ng-template #noVehicles>
+      <p>Nenhum veículo encontrado para os critérios de busca.</p>
+    </ng-template>
+  </section>
+
+
+  <section class="home-section">
+    <h2 class="section-title">Busque por marca</h2>
+    <div class="brand-logos">
+   
+      <div class="brand-logo-item" (click)="searchByBrand('Jeep')"><img src="/assets/svg/jeep.svg" alt="Jeep"></div>
+      <div class="brand-logo-item" (click)="searchByBrand('Volkswagen')"><img src="/assets/svg/vw.svg" alt="Volkswagen"></div>
+      <div class="brand-logo-item" (click)="searchByBrand('Honda')"><img src="/assets/svg/honda.svg" alt="Honda"></div>
+      <div class="brand-logo-item" (click)="searchByBrand('Toyota')"><img src="/assets/svg/toyota.svg" alt="Toyota"></div>
+      <div class="brand-logo-item" (click)="searchByBrand('Volvo')"><img src="/assets/svg/volvo.svg" alt="Volvo"></div>
+      <div class="brand-logo-item" (click)="searchByBrand('Fiat')"><img src="/assets/svg/fiat.svg" alt="Fiat"></div>
+      <div class="brand-logo-item" (click)="searchByBrand('Chevrolet')"><img src="/assets/svg/chevrolet.svg" alt="Chevrolet"></div>
+      <div class="brand-logo-item" (click)="searchByBrand('BMW')"><img src="/assets/svg/bmw.svg" alt="BMW"></div>
+      <div class="brand-logo-item" (click)="searchByBrand('Audi')"><img src="/assets/svg/audi.svg" alt="Audi"></div>
+      <div class="brand-logo-item" (click)="searchByBrand('Nissan')"><img src="/assets/svg/nissan.svg" alt="Nissan"></div>
+    </div>
+  </section>
+
+
+  <section class="home-section">
+    <h2 class="section-title" style="text-align: center;">Por que escolher o AutoFácil?</h2>
+    <div class="why-us-section">
+      <div class="feature-item">
+        <div class="icon-container"><span>&#128187;</span></div>
+        <h3>Gestão Completa</h3>
+        <p>Tenha uma gestão completa dos seus veículos em um só lugar.</p>
+      </div>
+      <div class="feature-item">
+        <div class="icon-container"><span>&#128273;</span></div>
+        <h3>Transparência e Confiança</h3>
+        <p>Encontre informações completas sobre os veículos.</p>
+      </div>
+      <div class="feature-item">
+        <div class="icon-container"><span>&#9200;</span></div>
+        <h3>Economia de Tempo</h3>
+        <p>Tudo o que você precisa para gerir e vender em um só lugar.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sell-car-section">
+    <h2>Quer vender seu carro?</h2>
+    <p>Anuncie grátis, controle seus veículos e venda para milhares de compradores.</p>
+    <a routerLink="/app/vehicles/new" class="btn-sell">Anunciar Agora</a>
+  </section>
+
+</div>

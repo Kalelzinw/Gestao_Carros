@@ -1,0 +1,95 @@
+<section class="wrapper">
+  <section class="container">
+    <form [formGroup]="userForm" class="inputs" (ngSubmit)="submit()" novalidate>
+      <app-form-input
+        formControlName="tel"
+        inputName="tel"
+        type="tel"
+        label="Telefone"
+        placeholder="Digite seu telefone"
+        [mask]="'(00) 00000-0000'"
+      >
+        <img src="/assets/svg/telefone.svg" slot="icon" />
+      </app-form-input>
+
+      <app-form-input
+        formControlName="email"
+        inputName="email"
+        type="email"
+        label="Endereço de E-mail"
+        placeholder="johndoe@gmail.com"
+      >
+        <img src="/assets/svg/email-icon.svg" slot="icon" />
+      </app-form-input>
+
+      <app-form-input
+        formControlName="password"
+        inputName="password"
+        type="password"
+        label="Sua senha"
+        placeholder="Digite sua senha"
+      >
+        <img src="/assets/svg/password-icon.svg" slot="icon" />
+      </app-form-input>
+
+      <app-form-input
+        formControlName="passwordConfirm"
+        inputName="passwordConfirm"
+        type="password"
+        label="Confirme sua senha"
+        placeholder="Confirme sua senha"
+      >
+        <img src="/assets/svg/password-icon.svg" slot="icon" />
+      </app-form-input>
+
+   <div *ngIf="userForm.errors?.['passwordMismatch']" class="text-red-500 text-sm">
+  As senhas não coincidem.
+  </div>
+
+      <div class="btn-wrapper">
+        <button type="submit" class="btn-primary">
+          <h1>Atualizar</h1>
+        </button>
+        <div class="divider"></div>
+        <button type="button" class="btn-secondary" (click)="onDeleteAccount()">
+          <h1>Deletar</h1>
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="img">
+    <div class="image">
+      <label for="imagem">Selecione uma imagem PNG:</label>
+      <input
+        type="file"
+        id="imagem"
+        accept=".png"
+        (change)="onFileSelected($event)"
+        [class.border-red-500]="userForm.get('imagem')?.invalid"
+      />
+
+      <div style="margin-top: 10px; width: 100px; height: 100px;">
+        <img
+          *ngIf="previewImagem"
+          [src]="previewImagem"
+          alt="Preview da Imagem"
+          style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 1px solid #ccc;"
+        />
+        <img
+          *ngIf="!previewImagem"
+          src="/assets/svg/foto.svg"
+          alt="Imagem Padrão"
+          style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 1px solid #ccc;"
+        />
+      </div>
+
+      <div *ngIf="userForm.get('imagem')?.errors?.['required']" class="text-red-500 text-sm">
+        A imagem é obrigatória.
+      </div>
+      <div *ngIf="userForm.get('imagem')?.errors?.['tipoInvalido']" class="text-red-500 text-sm">
+        Apenas arquivos PNG são permitidos.
+      </div>
+    </div>
+  </section>
+</section>

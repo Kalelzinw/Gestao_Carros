@@ -1,0 +1,119 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 0 2%;
+}
+
+.container {
+  margin-top: 3%;
+  margin-bottom: 5%;
+  width: 60%;
+  display: flex;
+  flex-direction: column; // Alterado para empilhar o form e os botões
+  justify-content: flex-start;
+}
+
+// Estilo principal para o formulário
+.vehicle-form {
+  width: 100%;
+  display: flex;
+  flex-direction: row; // Alterado para alinhar as colunas lado a lado
+  justify-content: space-between; // Espaçamento entre as colunas
+  gap: 24px; // Espaço entre as colunas
+}
+
+// Estilo para cada coluna do formulário
+.form-column {
+  width: 48%; // Cada coluna ocupa quase metade do espaço
+  display: flex;
+  flex-direction: column;
+  gap: 24px; // Espaço entre os inputs dentro de uma coluna
+}
+
+.img {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+
+  .image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px; // Reduzido para alinhar melhor
+    width: 100%;
+
+    .image-preview-container {
+      margin-top: 10px;
+      width: 150px;
+      height: 150px;
+    }
+
+    .image-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+    }
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+  width: 100%; // Ocupa a largura do container
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px; // Espaçamento acima dos botões
+}
+
+button {
+  width: 250px; // Largura fixa para os botões
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.btn-primary {
+    background-color: rgb(2, 2, 80);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &.btn-secondary {
+    border: 1px solid rgb(2, 2, 80);
+    color: rgb(2, 2, 80);
+    background-color: white;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      background-color: #f5f5f5;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.error-message {
+  color: #ef4444; // Vermelho do Tailwind
+  font-size: 0.8em;
+  margin-top: 5px;
+  display: block;
+  text-align: left;
+  width: 100%;
+}

@@ -1,0 +1,82 @@
+<div class="page-container">
+  <header class="app-header">
+    <div class="logo">
+      <img src="/assets/svg/Logo-Menor.svg" alt="Logo AutoFácil" routerLink="/app/home" style="cursor: pointer;" />
+    </div>
+    <nav>
+      <ul>
+        <li><a routerLink="/app/home">Início</a></li>
+        <li><a routerLink="/app/buscar">Buscar</a></li>
+        <li><a routerLink="/app/contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="user-actions">
+
+      <ng-container *ngIf="isLoggedIn$ | async">
+        <button class="btn-anunciar" routerLink="/app/vehicles/new">Anunciar</button>
+        
+        <div class="user-menu" *ngIf="currentUser$ | async as user" (click)="toggleDropdown()">
+          <img [src]="getImageUrl(user.fotoUrl)" alt="Foto de {{ user.name }}" class="user-avatar">
+          
+          <div class="dropdown-menu" *ngIf="isDropdownOpen">
+            <a class="dropdown-item" (click)="navigateTo('/app/user')">Meu perfil</a>
+            <a class="dropdown-item" (click)="navigateTo('/app/vehicles')">Meus anúncios</a>
+            <a class="dropdown-item" (click)="navigateTo('/app/favorites')">Meus favoritos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item logout" (click)="logout()">Sair</a>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!(isLoggedIn$ | async)">
+        <a routerLink="/login" class="btn-login">Entrar</a>
+        <a routerLink="/signup" class="btn-signup">Cadastrar-se</a>
+      </ng-container>
+
+    </div>
+  </header>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+
+ <footer>
+  <div class="footer-container">
+
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>AutoFácil</h3>
+        <p>O seu marketplace automotivo de confiança.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Links Úteis</h3>
+        <a>Sobre Nós</a>
+        <a>Como Funciona</a>
+        <a>Termos de Uso</a>
+        <a>Privacidade</a>
+      </div>
+      <div class="footer-column">
+        <h3>Suporte</h3>
+        <p>equipenextechgmail.com</p>
+        <p>(61) 98679-9863</p>
+      </div>
+      <div class="footer-column">
+        <h3>Redes Sociais</h3>
+        <div class="social-icons">
+       
+          <a href="#"><img src="/assets/svg/facebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="/assets/svg/instagram-icon.svg" alt="Instagram"></a>
+          <a href="#"><img src="/assets/svg/youtube-icon.svg" alt="YouTube"></a>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="footer-bottom">
+      <hr>
+      <p>© 2025 AutoFácil. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+</div>

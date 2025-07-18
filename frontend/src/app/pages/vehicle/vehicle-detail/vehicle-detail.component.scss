@@ -1,0 +1,141 @@
+:host {
+  --primary-color: #0d214f;
+  --accent-color: #4f46e5;
+  --text-color: #1f2937;
+  --text-light: #6b7280;
+  --border-color: #e2e8f0;
+  --background-light: #f7fafc;
+  --border-radius: 12px;
+}
+
+.detail-page-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+
+
+.main-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.image-gallery .main-image {
+  width: 100%;
+  aspect-ratio: 10 / 10;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.main-info {
+  .vehicle-year {
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0.25rem 0 1rem 0;
+  }
+  .vehicle-price {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  .btn-contact, .btn-favorite {
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-contact {
+    flex-grow: 1;
+    background-color: var(--accent-color);
+    color: white;
+    &:hover { background-color: #4338ca; }
+  }
+
+  .btn-favorite {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+
+    .favorited {
+      color: #ef4444; 
+    }
+    
+    &:hover {
+      background-color: #f7fafc;
+      border-color: #d1d5db;
+    }
+  }
+}
+
+.owner-actions .btn-edit {
+  display: inline-block;
+  font-weight: 500;
+  color: var(--accent-color);
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+.specs-section {
+  margin-bottom: 4rem;
+  
+  h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 2rem; }
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+
+  .spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    
+    span { color: var(--text-light); }
+    strong { color: var(--text-color); font-weight: 600; }
+  }
+}
+
+.seller-section {
+  h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 2rem; }
+  .seller-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--background-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+  }
+  .seller-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+}

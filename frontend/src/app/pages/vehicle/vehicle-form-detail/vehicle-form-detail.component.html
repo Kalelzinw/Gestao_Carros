@@ -1,0 +1,169 @@
+<section class="wrapper">
+  <section class="container">
+    <form [formGroup]="vehicleForm" class="vehicle-form" (ngSubmit)="submit()" novalidate>
+      
+      <div class="form-column">
+        <app-form-input
+          formControlName="marca"
+          inputName="marca"
+          type="text"
+          label="Marca"
+          placeholder="Ex: Ford"
+        >
+        </app-form-input>
+
+        <app-form-input
+          formControlName="modelo"
+          inputName="modelo"
+          type="text"
+          label="Modelo"
+          placeholder="Ex: Ka"
+        >
+        </app-form-input>
+
+        <app-form-input
+          formControlName="placa"
+          inputName="placa"
+          type="text"
+          label="Placa"
+          placeholder="ABC1D23"
+        >
+        </app-form-input>
+
+        <app-form-input
+          formControlName="chassi"
+          inputName="chassi"
+          type="text"
+          label="Chassi"
+          placeholder="Digite os 17 caracteres"
+        >
+        </app-form-input>
+
+        <app-form-input
+          formControlName="ano"
+          inputName="ano"
+          type="number"
+          label="Ano"
+          placeholder="Ex: 2020"
+        >
+        </app-form-input>
+
+        <app-form-input
+          formControlName="cor"
+          inputName="cor"
+          type="text"
+          label="Cor"
+          placeholder="Ex: Prata"
+        >
+        </app-form-input>
+      </div>
+
+      <div class="form-column">
+        <app-form-input
+          formControlName="quilometragem"
+          inputName="quilometragem"
+          type="number"
+          label="Quilometragem"
+          placeholder="Ex: 50000"
+        >
+        </app-form-input>
+
+        <app-form-input
+          formControlName="localidade"
+          inputName="localidade"
+          type="text"
+          label="Localização"
+          placeholder="Ex: São Paulo, SP"
+        >
+        </app-form-input>
+
+        <app-form-input
+          formControlName="valorVenda"
+          inputName="valorVenda"
+          type="number"
+          label="Valor de Venda (R$)"
+          placeholder="Ex: 45000"
+        >
+        </app-form-input>
+
+        <app-form-input
+          formControlName="valorCompra"
+          inputName="valorCompra"
+          type="number"
+          label="Valor de Compra (R$)"
+          placeholder="Ex: 40000"
+        >
+        </app-form-input>
+        
+        <div class="form-field">
+          <label for="status">Status do Veículo</label>
+          <select id="status" formControlName="status" class="select-input">
+            <option value="DISPONIVEL">Disponível</option>
+            <option value="RESERVADO">Reservado</option>
+            <option value="VENDIDO">Vendido</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="visivel">Visível no site?</label>
+          <select id="visivel" formControlName="visivel" class="select-input">
+            <option [ngValue]="true">Sim</option>
+            <option [ngValue]="false">Não</option>
+          </select>
+        </div>
+
+        <div class="form-file-upload">
+          <label for="documento">Documento do Veículo (PDF):</label>
+          <input
+            type="file"
+            id="documento"
+            accept="application/pdf"
+            (change)="onDocumentoSelected($event)"
+          />
+          <div *ngIf="nomeArquivoDocumento" class="file-name">
+            {{ nomeArquivoDocumento }}
+          </div>
+        </div>
+      </div>
+    </form>
+    
+    <div class="btn-wrapper">
+      <button type="button" (click)="submit()" class="btn-primary" [disabled]="vehicleForm.invalid">
+        <h1>{{ isEditMode ? 'Atualizar' : 'Cadastrar' }}</h1>
+      </button>
+      <div class="divider" *ngIf="isEditMode"></div>
+      <button *ngIf="isEditMode" type="button" class="btn-secondary" (click)="onDeleteVehicle()">
+        <h1>Deletar</h1>
+      </button>
+    </div>
+
+  </section>
+
+  <section class="img">
+    <div class="image">
+      <label for="imagem">Selecione uma imagem (PNG ou JPEG):</label>
+      <input
+        type="file"
+        id="imagem"
+        accept="image/png, image/jpeg"
+        #imagemInput 
+        (change)="onImagemSelected($event)" 
+      />
+
+      <div class="image-preview-container" (click)="imagemInput.click()">
+        <img
+          *ngIf="previewImagem"
+          [src]="previewImagem"
+          alt="Preview da Imagem"
+          class="image-preview"
+        />
+        <img
+          *ngIf="!previewImagem"
+          src="/assets/svg/foto.svg" 
+          alt="Imagem Padrão"
+          class="image-preview"
+        />
+      </div>
+    </div>
+  </section>
+</section>

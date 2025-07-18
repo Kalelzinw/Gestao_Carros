@@ -1,0 +1,32 @@
+<section class="page-container">
+  <div class="header">
+    <h2>Meus Veículos Cadastrados</h2>
+    <button class="btn-primary" (click)="navigateToCreate()">Adicionar Novo Veículo</button>
+  </div>
+
+  <div *ngIf="vehicles.length === 0" class="empty-state">
+    <p>Você ainda não cadastrou nenhum veículo.</p>
+    <p>Clique em "Adicionar Novo Veículo" para começar.</p>
+  </div>
+
+  <div class="vehicles-grid" *ngIf="vehicles.length > 0">
+    
+    <div *ngFor="let vehicle of vehicles" class="vehicle-card" (click)="navigateToDetail(vehicle.id)">
+      
+      <div class="vehicle-image-container">
+        <img [src]="getVehicleImageUrl(vehicle.imageUrl)" alt="Foto de {{ vehicle.marca }} {{ vehicle.modelo }}">
+        <span class="status-badge" [ngClass]="vehicle.status.toLowerCase()">
+          {{ vehicle.status | titlecase }}
+        </span>
+      </div>
+
+      <div class="vehicle-info">
+        <h3>{{ vehicle.marca }} {{ vehicle.modelo }}</h3>
+        <p class="details">{{ vehicle.ano }} &bull; {{ vehicle.cor }} &bull; {{ vehicle.quilometragem | number }} km</p>
+        <p class="location">{{ vehicle.localidade }}</p>
+        <p class="price">{{ vehicle.valorVenda | currency:'BRL':'symbol':'1.2-2' }}</p>
+      </div>
+
+    </div>
+  </div>
+</section>

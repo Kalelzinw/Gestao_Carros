@@ -1,0 +1,58 @@
+<div class="detail-page-container" *ngIf="!isLoading">
+  <div *ngIf="vehicle; else notFound">
+
+    <section class="main-section">
+      <div class="image-gallery">
+        <img class="main-image" [src]="getVehicleImageUrl(vehicle.imageUrl)" alt="Foto de {{ vehicle.marca }}">
+        </div>
+
+      <div class="main-info">
+        <span class="vehicle-year">{{ vehicle.ano }}</span>
+        <h1>{{ vehicle.marca }} {{ vehicle.modelo }}</h1>
+        <p class="vehicle-price">{{ vehicle.valorVenda | currency:'BRL':'symbol':'1.2-2' }}</p>
+        
+        <div class="actions">
+          <button class="btn-contact">Entrar em contato</button>
+          
+          <button class="btn-favorite" *ngIf="isLoggedIn$ | async" (click)="toggleFavorite()">
+            <span [class.favorited]="vehicle.isFavorited">&#10084;</span> 
+            {{ vehicle.isFavorited ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos' }}
+          </button>
+        </div>
+        
+        <div class="owner-actions" *ngIf="isOwner">
+          <a [routerLink]="['/app/vehicles/edit', vehicle.id]" class="btn-edit">Editar Anúncio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="specs-section">
+      <h2>Especificações</h2>
+      <div class="specs-grid">
+        <div class="spec-item"><span>Marca</span><strong>{{ vehicle.marca }}</strong></div>
+        <div class="spec-item"><span>Modelo</span><strong>{{ vehicle.modelo }}</strong></div>
+        <div class="spec-item"><span>Ano</span><strong>{{ vehicle.ano }}</strong></div>
+        <div class="spec-item"><span>Cor</span><strong>{{ vehicle.cor }}</strong></div>
+        <div class="spec-item"><span>KM</span><strong>{{ vehicle.quilometragem | number }}</strong></div>
+        <div class="spec-item"><span>Local</span><strong>{{ vehicle.localidade }}</strong></div>
+        <div class="spec-item"><span>Placa</span><strong>{{ vehicle.placa }}</strong></div>
+        <div class="spec-item"><span>Chassi</span><strong>{{ vehicle.chassi }}</strong></div>
+      </div>
+    </section>
+
+    <section class="seller-section">
+        <h2>Informações do Vendedor</h2>
+        <div class="seller-info">
+            <img [src]="getVehicleImageUrl(vehicle.user.fotoUrl)" alt="Foto de {{ vehicle.user.name }}" class="seller-avatar">
+            <p>{{ vehicle.user.name }}</p>
+            <p>{{ vehicle.user.tel }}</p>
+            <p>{{ vehicle.user.email }}</p>
+        </div>
+    </section>
+
+  </div>
+</div>
+
+<ng-template #notFound>
+  <p>Veículo não encontrado.</p>
+</ng-template>

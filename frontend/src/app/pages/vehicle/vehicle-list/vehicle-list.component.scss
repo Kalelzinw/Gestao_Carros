@@ -1,0 +1,173 @@
+// Variáveis de Cor e Estilo para fácil manutenção
+:host {
+  --primary-color: #4f46e5; // Um roxo/azul moderno
+  --primary-color-hover: #4338ca;
+  --text-color-dark: #1f2937;
+  --text-color-light: #6b7280;
+  --border-color: #e5e7eb;
+  --background-color: #f9fafb;
+  --card-background: #ffffff;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+// Container principal da página
+.page-container {
+  padding: 2rem;
+  background-color: var(--background-color);
+  min-height: 80vh;
+}
+
+// Cabeçalho da página (Título e Botão)
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color-dark);
+    margin: 0;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+}
+
+// Grid para os cartões de veículos
+.vehicles-grid {
+  display: grid;
+  // Cria colunas responsivas: 1 em telas pequenas, 2 em médias, 3 em grandes
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+// Estilo de cada cartão de veículo
+.vehicle-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden; // Garante que a imagem não "vaze" das bordas arredondadas
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px); // Efeito de "flutuar"
+    box-shadow: var(--card-shadow-hover);
+  }
+}
+
+// Container da imagem do veículo
+.vehicle-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 66.66%; // Proporção 3:2 para a imagem (altura é 2/3 da largura)
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Garante que a imagem cubra todo o espaço sem distorcer
+  }
+}
+
+// Selo de status (Disponível, Vendido, etc.)
+.status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  border-radius: 9999px; // Para fazer uma pílula
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  // Cores dinâmicas baseadas na classe
+  &.disponivel { background-color: #10b981; } // Verde
+  &.reservado { background-color: #f59e0b; } // Amarelo
+  &.vendido { background-color: #ef4444; } // Vermelho
+}
+
+// Container das informações do veículo
+.vehicle-info {
+  padding: 1rem;
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin: 0 0 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; // Evita que nomes muito longos quebrem o layout
+  }
+
+  .details {
+    font-size: 0.875rem;
+    color: var(--text-color-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .location {
+    font-size: 0.875rem;
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    
+    // Opcional: Adicionar um ícone de localização
+    // &::before {
+    //   content: '📍';
+    //   margin-right: 0.5rem;
+    // }
+  }
+
+  .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+}
+
+// Estilo para a mensagem de "nenhum veículo"
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--card-background);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  
+  p {
+    color: var(--text-color-light);
+    font-size: 1.125rem;
+    margin: 0;
+
+    &:first-of-type {
+      color: var(--text-color-dark);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

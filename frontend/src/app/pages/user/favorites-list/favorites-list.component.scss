@@ -1,0 +1,113 @@
+
+:host {
+  --text-color: #1f2937;
+  --text-light: #6b7280;
+  --border-color: #e2e8f0;
+  --primary-color: #0d214f;
+  --card-background: #ffffff;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+}
+
+
+.favorites-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+  }
+}
+
+
+.vehicles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+
+.vehicle-card {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-lg);
+  }
+}
+
+.vehicle-image-container {
+  width: 100%;
+  padding-top: 66.66%; 
+  position: relative;
+  background-color: #f0f0f0;
+  img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+}
+
+.vehicle-info {
+  padding: 1.25rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  h3 { font-size: 1.2rem; font-weight: 600; margin: 0 0 0.25rem; }
+  .details { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem; }
+  .location { font-size: 0.9rem; color: var(--text-light); margin-top: auto; padding-top: 1rem; }
+  .price { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 0.5rem; }
+}
+
+// Mensagem para quando a lista de favoritos estiver vazia
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-light);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  
+  h2 { 
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-back { 
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s ease;
+    &:hover {
+        background-color: #0b1a3e;
+    }
+  }
+}

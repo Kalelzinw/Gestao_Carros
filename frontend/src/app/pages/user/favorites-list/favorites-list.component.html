@@ -1,0 +1,30 @@
+<div class="favorites-page-container">
+  <div class="page-header">
+    <h1>Meus Favoritos</h1>
+    <p>Aqui estão os veículos que você salvou para não perder de vista.</p>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-state">
+    <p>Carregando seus favoritos...</p>
+  </div>
+
+  <div class="vehicles-grid" *ngIf="!isLoading && favoriteVehicles.length > 0">
+    <div *ngFor="let vehicle of favoriteVehicles" class="vehicle-card" (click)="navigateToDetail(vehicle.id)">
+      <div class="vehicle-image-container">
+        <img [src]="getVehicleImageUrl(vehicle.imageUrl)" alt="Foto de {{ vehicle.marca }} {{ vehicle.modelo }}">
+      </div>
+      <div class="vehicle-info">
+        <h3>{{ vehicle.marca }} {{ vehicle.modelo }}</h3>
+        <p class="details">{{ vehicle.ano }} &bull; {{ vehicle.placa }}</p>
+        <p class="location">{{ vehicle.localidade }}</p>
+        <p class="price">{{ vehicle.valorVenda | currency:'BRL':'symbol':'1.2-2' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && favoriteVehicles.length === 0" class="empty-state">
+    <h2>Sua lista de favoritos está vazia</h2>
+    <p>Clique no coração nos anúncios para salvar os veículos que te interessam.</p>
+    <button class="btn-back" routerLink="/app/home">Buscar Veículos</button>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<app-default-login-layout
+  title="Sign in and start today!"
+  primaryBtnText="Cadastre-se"
+  secondaryBtnText="Faça Login"
+  (submit)="submit()"
+  (navigate)="navigate()"
+  [disablePrimaryBtn]="!signupForm.valid"
+>
+  <div class="foto-content" (click)="selecionarImagem()">
+    <img [src]="previewImagem || '/assets/svg/foto.svg'" alt="Logo de Login" style="cursor: pointer; width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+    <p style="text-align: center; font-size: smaller; color: gray; margin-top: 5px;">Clique para adicionar foto</p>
+  </div>
+  <form [formGroup]="signupForm" class="inputs">
+    <div>
+      <label for="imagem">Selecione uma imagem PNG:</label>
+      <input type="file" id="imagem" accept=".png" (change)="onFileSelected($event)">
+      <div *ngIf="signupForm.get('imagem')?.invalid && signupForm.get('imagem')?.errors?.['required']" class="text-red-500 text-sm">
+        A imagem é obrigatória.
+      </div>
+      <div *ngIf="signupForm.get('imagem')?.invalid && signupForm.get('imagem')?.errors?.['tipoInvalido']" class="text-red-500 text-sm">
+        Apenas arquivos PNG são permitidos.
+      </div>
+
+    </div>
+
+    <app-primary-input
+      formControlName="name"
+      inputName="name"
+      type="text"
+      label="Nome Completo"
+      placeholder="John Doe"
+    >
+      <img src="/assets/svg/user-icon.svg" slot="icon"/>
+    </app-primary-input>
+
+    <app-primary-input
+      formControlName="email"
+      inputName="email"
+      type="email"
+      label="Endereço de E-mail"
+      placeholder="johndoe@gmail.com"
+    >
+      <img src="/assets/svg/email-icon.svg" slot="icon"/>
+    </app-primary-input>
+
+    <app-primary-input
+      formControlName="cpf"
+      inputName="cpf"
+      label="Seu CPF"
+      [mask]="'000.000.000-00'"
+      ngxMask
+    >
+      <img src="/assets/svg/cpf.svg" slot="icon"/>
+    </app-primary-input>
+    <div class="text-red-500 text-sm" *ngIf="signupForm.get('cpf')?.invalid && (signupForm.get('cpf')?.touched || signupForm.get('cpf')?.dirty)">
+      <div *ngIf="signupForm.get('cpf')?.hasError('cpfInvalido')">CPF inválido. Digite um CPF válido.</div>
+      <div *ngIf="signupForm.get('cpf')?.hasError('cpfFormatoIncorreto')">CPF deve estar no formato 000.000.000-00.</div>
+    </div>
+    <app-primary-input
+      formControlName="tel"
+      inputName="tel"
+      type="tel"
+      label="Telefone"
+      [mask]="'(00) 00000-0000'"
+    >
+      <img src="/assets/svg/telefone.svg" slot="icon"/>
+    </app-primary-input>
+
+    <app-primary-input
+      formControlName="nasc"
+      inputName="nasc"
+      type="date"
+      label="Data de nasc"
+    >
+      <img src="/assets/svg/calendario.svg" slot="icon"/>
+    </app-primary-input>
+
+    <app-primary-input
+      formControlName="password"
+      inputName="password"
+      type="password"
+      label="Senha"
+    >
+      <img src="/assets/svg/password-icon.svg" slot="icon"/>
+    </app-primary-input>
+
+    <app-primary-input
+      formControlName="passwordConfirm"
+      inputName="passwordConfirm"
+      type="password"
+      label="Confirm your Password"
+    >
+      <img src="/assets/svg/password-icon.svg" slot="icon"/>
+    </app-primary-input>
+    <div>
+      <h4>Use pelo menos 8 caracteres</h4>
+      <h4>Maximo de 12 caracteres</h4>
+      <h4>Combine letras e números. Ex.: W1</h4>
+    </div>
+  </form>
+
+  <div style="display: none;">
+    <input type="file" #imagemInput id="imagemInput" accept=".png" (change)="onFileSelected($event)">
+  </div>
+</app-default-login-layout>

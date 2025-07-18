@@ -1,0 +1,302 @@
+:host {
+  --primary-color: #0d214f;
+  --accent-color: #2d3748; 
+  --accent-color-hover: #1a202c;
+  --text-color: #1f2937;
+  --text-light: #6b7280;
+  --border-color: #e2e8f0;
+  --background-light: #f7fafc;
+  --card-background: #ffffff;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
+  --border-radius: 8px;
+}
+
+.home-page-wrapper {
+  background-color: var(--background-light);
+}
+
+.search-hero-section {
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  p.subtitle {
+    font-size: 1.125rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+  }
+}
+
+.search-form {
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; 
+}
+
+
+.search-input-main {
+  width: 100%;
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    outline: none;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.1);
+    }
+  }
+}
+
+
+.search-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  
+  label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1em;
+  }
+}
+
+.search-button {
+    margin-top: 40px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center; 
+  width: auto; 
+
+  &:hover {
+    background-color: var(--accent-color-hover);
+  }
+}
+
+
+.home-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-align: center; 
+  margin-bottom: 2.5rem;
+}
+
+.vehicles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.vehicle-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-lg);
+  }
+}
+
+.vehicle-image-container {
+  width: 100%;
+  padding-top: 66.66%; 
+  position: relative;
+  background-color: #f0f0f0;
+   aspect-ratio: 10/ 10;
+  img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+}
+
+.vehicle-info {
+  padding: 1.25rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  h3 { font-size: 1.2rem; font-weight: 600; margin: 0 0 0.25rem; }
+  .details { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem; }
+  .location { font-size: 0.9rem; color: var(--text-light); margin-top: auto; padding-top: 1rem; }
+  .price { font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 0.5rem; }
+}
+
+.brand-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+
+  .brand-logo-item {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--card-background);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow);
+      border-color: var(--accent-color);
+    }
+
+    img {
+      max-width: 100px;
+      height: 40px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    &:hover img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+  }
+}
+
+.why-us-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  
+  .icon-container {
+    font-size: 2.5rem; 
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 0.5rem 0;
+  }
+
+  p {
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 300px; 
+  }
+}
+
+.sell-car-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #f0f2f5; 
+  border-radius: var(--border-radius);
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-sell {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 600;
+    padding: 0.8rem 2.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex; 
+    align-items: center;
+
+    &:hover {
+      background-color: var(--accent-color-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow);
+    }
+  }
+}

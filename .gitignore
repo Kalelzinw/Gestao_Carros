@@ -1,0 +1,48 @@
+# Ignora todos os arquivos .env em qualquer pasta
+**/.env
+
+
+# ==================================
+# DADOS DO DOCKER
+# ==================================
+# Ignora a pasta que guarda os dados do banco
+.data/
+
+
+# ==================================
+# DEPENDÊNCIAS E ARQUIVOS COMPILADOS
+# ==================================
+# Java/Maven
+target/
+*.jar
+*.war
+*.ear
+
+# Node.js
+node_modules/
+build/
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+
+# ==================================
+# ARQUIVOS DE IDE E SISTEMA
+# ==================================
+.idea/
+.vscode/
+*.iml
+.settings/
+.classpath
+.project
+.DS_Store
+Thumbs.db
+hs_err_pid*
+replay_pid*
+
+backend/uploads/
+
+.angular/
